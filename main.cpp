@@ -4,18 +4,13 @@
 #include <Windows.h>
 #include "Caja.h"
 #include "Fecha.h"
-#include "Test.h"
 #include "Articulo.h"
 #include "Servicio.h"
 
 int main() {
 
-    Test *derivado = new Test();
-    //delete derivado;
     Caja* caja = new Caja(30000);
     Fecha* fecha = new Fecha(02,04,2001);
-
-    cout<< (derivado->password("corrales1!") ? "CONTRASENA OK" : "CONTRASENA OKN'T") <<endl;
 
 
     caja->depositarDinero(20000);
@@ -36,9 +31,9 @@ int main() {
     Servicio* servicio = new Servicio("Netflix", 15000, 20041, 30);
     cout << servicio->toString();
 
-    int var;
-    cin>>var;
-    cin.fail();
-    Sleep(2000);
+    //int var;
+    //cin>>var;
+    //cin.fail();
+    //Sleep(2000);
     return 0;
 }
