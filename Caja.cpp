@@ -1,6 +1,4 @@
-//
 // Created by aleja on 12/04/2021.
-//
 
 #include "Caja.h"
 
@@ -16,12 +14,16 @@ Caja::~Caja() {
 
 }
 
-void Caja::depositarDinero(float dinero) {
-    setDinero(getDinero()+dinero);
+void Caja::setDinero(float dinero) {
+    dineroTotal = dinero;
 }
 
-void Caja::retirarDinero(float dinero) {
-    setDinero(getDinero()-dinero);
+float Caja::getVuelto(float pago, float costo) {
+    return pago-costo;
+}
+
+float Caja::getDinero() const {
+    return dineroTotal;
 }
 
 string Caja::toString(){
@@ -32,12 +34,16 @@ string Caja::toString(){
     return s.str();
 }
 
-
-float Caja::getVuelto(float pago, float costo) {
-    return pago-costo;
+void Caja::depositarDinero(float dinero) {
+    setDinero(getDinero()+dinero);
 }
 
-string Caja::desgloceVuelto(float pago, float costo) {
+void Caja::retirarDinero(float dinero) {
+    setDinero(getDinero()-dinero);
+}
+
+string Caja::desgloceVuelto(float pago, float costo)
+{
     stringstream s;
     float vuelto = pago-costo;
     int billetes2000 = 0;
@@ -84,12 +90,4 @@ string Caja::desgloceVuelto(float pago, float costo) {
     s << "Vuelto total: "<< pago-costo << " colones\n";
     s << "=============================\n";
     return s.str();
-}
-
-float Caja::getDinero() const {
-    return dineroTotal;
-}
-
-void Caja::setDinero(float dinero) {
-    dineroTotal = dinero;
 }

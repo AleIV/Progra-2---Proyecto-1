@@ -1,8 +1,26 @@
-//
 // Created by aleja on 12/04/2021.
-//
 
 #include "Servicio.h"
+
+Servicio::Servicio() {
+
+}
+
+Servicio::Servicio(const string &nombre, float precio, int cantidad, float porcentajeDescuento) : Producto(nombre, precio, cantidad) {
+    this->porcentajeDescuento = porcentajeDescuento;
+}
+
+Servicio::~Servicio() {
+
+}
+
+void Servicio::setPorcentajeDescuento(float porcentajeDescuento) {
+    Servicio::porcentajeDescuento = porcentajeDescuento;
+}
+
+float Servicio::getPorcentajeDescuento() const {
+    return porcentajeDescuento;
+}
 
 string Servicio::toString() {
     stringstream s;
@@ -13,24 +31,4 @@ string Servicio::toString() {
     s << "Porcentaje de descuento: "<< porcentajeDescuento << "%\n";
     s << "=============================\n";
     return s.str();
-}
-
-Servicio::Servicio() {
-
-}
-
-float Servicio::getPorcentajeDescuento() const {
-    return porcentajeDescuento;
-}
-
-void Servicio::setPorcentajeDescuento(float porcentajeDescuento) {
-    Servicio::porcentajeDescuento = porcentajeDescuento;
-}
-
-Servicio::Servicio(const string &nombre, float precio, int cantidad, float porcentajeDescuento) : Producto(nombre, precio, cantidad) {
-    this->porcentajeDescuento = porcentajeDescuento;
-}
-
-Servicio::~Servicio() {
-
 }
