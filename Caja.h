@@ -1,31 +1,33 @@
-//
 // Created by aleja on 12/04/2021.
-//
 
-#ifndef PROGRA2_CAJA_H
-#define PROGRA2_CAJA_H
+#ifndef INC_1ERPROYECTO_CAJA_H
+#define INC_1ERPROYECTO_CAJA_H
 
 #include <sstream>
 #include <iostream>
 
 using namespace std;
-class Caja {
+
+class Caja
+{
 private:
     float dineroTotal = 0;
+
 public:
+    Caja();
+    Caja(float);
+    virtual ~Caja();
+
     void setDinero(float);
-    void depositarDinero(float);
-    void retirarDinero(float);
+
     float getVuelto(float, float);
     float getDinero() const;
 
     string toString();
-    string desgloceVuelto(float, float);
-    virtual ~Caja();
 
-    Caja();
-    Caja(float);
+    void depositarDinero(float);
+    void retirarDinero(float);
+    string desgloceVuelto(float, float);
 };
 
-
-#endif //PROGRA2_CAJA_H
+#endif //INC_1ERPROYECTO_CAJA_H
