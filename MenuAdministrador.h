@@ -16,11 +16,13 @@ class MenuAdministrador
 private:
     IAdministrador *administrador;
 
+    static bool menuIngresoClave();
+    static bool esNumero(string &, char);
+
 public:
     explicit MenuAdministrador(Inventario &);
 
     void mostrar();
-    static bool menuIngresoClave();
 };
 
 #endif //INC_1ERPROYECTO_MENUADMINISTRADOR_H

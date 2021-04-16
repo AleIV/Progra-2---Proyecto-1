@@ -14,9 +14,9 @@ public:
     virtual ~IVendedor() = default;
 
     //      Getters + toString
-    [[nodiscard]] virtual string getNombre() const = 0;
+    virtual string getNombre() const = 0;
 
-    [[nodiscard]] virtual string toString() const = 0;
+    virtual string toString() const = 0;
 
     //      Others
     virtual string realizarCompra(const string &, int, float) = 0;

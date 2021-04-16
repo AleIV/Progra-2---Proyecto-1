@@ -25,10 +25,10 @@ Fecha *Articulo::getFechaRegistro() const {
 string Articulo::toString() {
     stringstream s;
     s << "=============================\n";
-    s << "Nombre del articulo: "<< nombre << "\n";
-    s << "Precio: "<< precio << " colones\n";
-    s << "Cantidad: "<< cantidad << "\n";
-    s << "Fecha de registro: "<< fechaRegistro->toString() << "\n";
+    s << "-< Nombre del articulo: "<< nombre << "\n";
+    s << "-< Precio: "<< precio << " colones\n";
+    s << "-< Cantidad: "<< cantidad << "\n";
+    s << "-< Fecha de registro: "<< fechaRegistro->toString() << "\n";
     s << "=============================\n";
     return s.str();
 }

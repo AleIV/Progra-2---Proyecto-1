@@ -51,9 +51,9 @@ string Caja::desgloceVuelto(float pago, float costo)
     int monedas500 = 0;
     int monedas100 = 0;
     s << "=============================\n";
-    s << "Desglose del vuelto\n";
-    s << "Paga con: "<< pago << " colones\n";
-    s << "Costo: "<< costo << " colones\n";
+    s << "   - Desglose del vuelto -\n";
+    s << "-< Pago:  "<< pago << " colones\n";
+    s << "-< Costo: "<< costo << " colones\n";
     s << "=============================\n";
 
     bool finish = false;
@@ -81,13 +81,13 @@ string Caja::desgloceVuelto(float pago, float costo)
     }
 
 
-    if(billetes2000 != 0) s << "Billetes de 2000: " << billetes2000 <<"\n";
-    if(billetes1000 != 0) s << "Billetes de 1000: " << billetes1000 <<"\n";
-    if(monedas500 != 0) s << "Monedas de 500: " << monedas500 <<"\n";
-    if(billetes2000 != 0) s << "Monedas de 100: " << billetes2000 <<"\n";
+    if(billetes2000 != 0) s << "-< Billetes de 2000: " << billetes2000 <<"\n";
+    if(billetes1000 != 0) s << "-< Billetes de 1000: " << billetes1000 <<"\n";
+    if(monedas500 != 0) s << "-< Monedas de 500: " << monedas500 <<"\n";
+    if(billetes2000 != 0) s << "-< Monedas de 100: " << billetes2000 <<"\n";
 
     s << "=============================\n";
-    s << "Vuelto total: "<< pago-costo << " colones\n";
+    s << "-< Vuelto total: "<< fixed << setprecision(2) << pago-costo << " colones\n";
     s << "=============================\n";
     return s.str();
 }

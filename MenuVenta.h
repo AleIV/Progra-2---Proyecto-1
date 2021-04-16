@@ -14,6 +14,8 @@ class MenuVenta
 private:
     IVendedor *vendedor;
 
+    static bool esNumero(string &, char);
+
 public:
     explicit MenuVenta(Inventario &);
 

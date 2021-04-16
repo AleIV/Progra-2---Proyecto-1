@@ -20,5 +20,4 @@ public:
     void mostrarMenuVenta();
 };
 
-
 #endif //INC_1ERPROYECTO_MENUPRINCIPAL_H

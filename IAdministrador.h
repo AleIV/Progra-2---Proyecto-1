@@ -17,10 +17,10 @@ public:
     virtual void setNombre(const string &) = 0;
 
     //      Getters + toString
-    [[nodiscard]] virtual string getNombre() const = 0;
-    [[nodiscard]] virtual int getIdentificador() const = 0;
+    virtual string getNombre() const = 0;
+    virtual int getIdentificador() const = 0;
 
-    [[nodiscard]] virtual string toString() const = 0;
+    virtual string toString() const = 0;
 
     //      Others
     virtual void insertar(Producto &) = 0;
@@ -29,7 +29,7 @@ public:
     virtual void borrar(const string &) = 0;
     virtual Producto *consultar(const string &) = 0;
     virtual float consultarDinero() const = 0;
-    virtual void ingresarDinero(float) = 0;//Duda: ¿sin 'int' en parámetro?
+    virtual void ingresarDinero(float) = 0;
     virtual void retirarDinero(float) = 0;
 };
 

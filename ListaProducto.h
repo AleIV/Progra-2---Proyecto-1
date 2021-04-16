@@ -25,15 +25,15 @@ public:
     [[maybe_unused]] [[nodiscard]] NodoProducto* getActual() const;
     [[maybe_unused]] [[nodiscard]] NodoProducto* getUltimo() const;
 
+    [[maybe_unused]] [[nodiscard]] string toStringListaProducto();
+
     void agregar(Producto &);
     void eliminarPrimer();
     bool eliminarUltimo();
     bool eliminar(const string &);
     bool listaVacia();
     Producto* obtenerProductoPorNombre(const string &);//(Case sensitive)
-    void ordenaPrecioAscendente();
-
-    string toStringListaProducto();
+    [[maybe_unused]] void ordenaPrecioAscendente();
 };
 
 #endif //LISTAPRODUCTO_LISTAPRODUCTO_H

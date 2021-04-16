@@ -25,10 +25,10 @@ float Servicio::getPorcentajeDescuento() const {
 string Servicio::toString() {
     stringstream s;
     s << "=============================\n";
-    s << "Nombre del servicio: "<< nombre << "\n";
-    s << "Precio: "<< precio << " colones\n";
-    s << "Cantidad: "<< cantidad << "\n";
-    s << "Porcentaje de descuento: "<< porcentajeDescuento << "%\n";
+    s << "-< Nombre del servicio: "<< nombre << "\n";
+    s << "-< Precio: "<< precio << " colones\n";
+    s << "-< Cantidad: "<< cantidad << "\n";
+    s << "-< Porcentaje de descuento: "<< porcentajeDescuento << "%\n";
     s << "=============================\n";
     return s.str();
 }

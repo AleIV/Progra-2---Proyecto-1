@@ -18,7 +18,7 @@ void MenuPrincipal::mostrarMenuPrincipal()
         cout << "   ( 1 ) Ir a menu de administrador" << endl;
         cout << "   ( 2 ) Ir a menu de venta" << endl;
         cout << "   ( 3 ) Salir de la aplicacion" << endl;
-        cout<<"-->Opcion: ";
+        cout<<"-> Opcion: ";
         cin.getline(opcion,sizeof(opcion));
 
         switch(opcion[0])
@@ -31,7 +31,7 @@ void MenuPrincipal::mostrarMenuPrincipal()
 
             case '3': return;//Sale de menuPrincipal
 
-            default: cout<<"Opcion incorrecta, intente de nuevo"<<endl; break;
+            default: cout<<"(!) Opcion incorrecta, intente de nuevo..."<<endl; break;
         }
 
     }while(opcion[0]!='3');
