@@ -73,11 +73,11 @@ Inventario::~Inventario()
 {
     stringstream s;
 
-    s << "   - Inventario -" << endl;
+    s << endl << "   - Inventario -" << endl;
     s << "-< Identificador: " << identificador << endl;
     s << "-< Nombre: " << nombre << endl;
     s << listaProducto->toStringListaProducto() << endl;
-    s<<caja->toString();
+    //s<<caja->toString(); Por seguridad de el/la cajero/a, no debería ser mostrado. consultarDinero() es accesible desde menuAdministrador
 
     return s.str();
 }
@@ -147,16 +147,21 @@ void Inventario::retirarDinero(float xDinero)
 
 
 //  HERENCIAS DE IVENDEDOR
-string Inventario::realizarCompra(const string &xNombre, int xCantidad, float xPago)
+string Inventario::realizarCompra(int xPosicion, int xCantidad, float xPago)
 {
-    if (consultar(xNombre) == nullptr) { return "(!) Producto no registrado...\n"; }
-    Producto &producto = *consultar((xNombre));
-
+    if(getListaProducto()->listaVacia()){ return "(!) No hay productos registrados para comprar...\n"; }
+    if(getListaProducto()->obtenerProductoPorPosicion(xPosicion)==nullptr) { return "(!) No exite un producto en la posicion digitada...\n"; }
+    Producto &producto = *getListaProducto()->obtenerProductoPorPosicion(xPosicion);
     if (producto.getCantidad() < xCantidad) { return "(!) No hay suficiente en stock...\n"; }
     if (producto.getPrecio()*xCantidad > xPago) { return "(!) Pago insuficiente...\n"; }
 
     //Realiza compra
-    disminuirCantidades(xNombre,xCantidad);
+    disminuirCantidades(producto.getNombre(),xCantidad);
     ingresarDinero(producto.getPrecio()*xCantidad);
     return caja->desgloceVuelto(xPago,producto.getPrecio()*xCantidad);
+}
+
+Producto *Inventario::consultar(int xPosicion)
+{
+    return listaProducto->obtenerProductoPorPosicion(xPosicion);
 }

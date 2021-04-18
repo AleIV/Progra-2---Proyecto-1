@@ -125,7 +125,7 @@ void MenuAdministrador::mostrar()
                                     if(dia>30){ cout<<"(!) Dia no puede ser mayor a 30 en el mes "<<mes<<"..."<<endl; continue; } break;
 
                                 case 2:
-                                    if(dia>28){ cout<<"(!) Dia no puede ser mayor a 29 en febrero. Si es anio bisiesto, registrar como 28..."<<endl; continue; } break;
+                                    if(dia>28){ cout<<"(!) Dia no puede ser mayor a 28 en febrero. Si es anio bisiesto, registrar como 28..."<<endl; continue; } break;
 
                                 default: cout<<"(!) Ha ocurrido un error..."; return;
                             }
