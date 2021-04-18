@@ -19,7 +19,8 @@ public:
     virtual string toString() const = 0;
 
     //      Others
-    virtual string realizarCompra(const string &, int, float) = 0;
+    virtual string realizarCompra(int, int, float) = 0;
+    virtual Producto *consultar(int) = 0;
 };
 
 #endif //INC_1ERPROYECTO_IVENDEDOR_H

@@ -6,6 +6,13 @@
 #include "MenuAdministrador.h"
 #include "MenuVenta.h"
 
+/*
+ * I – Interface Segregation Principle (ISP)
+ *    1) Es mejor muchas clases pequeñas y especializadas para cubrir mejor las necesidades del programa.
+ *          mmenuAdministrador y menuVenta, a pesar de ser todas menú, al estar separadas en secciones pueden cubrir cada necesidad
+ *          sin sobrecargar al usuario con opciones de otro menú que no necesitaría si solo hubiese menuPrincipal.
+ */
+
 class MenuPrincipal
 {
 private:

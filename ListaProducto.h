@@ -33,6 +33,7 @@ public:
     bool eliminar(const string &);
     bool listaVacia();
     Producto* obtenerProductoPorNombre(const string &);//(Case sensitive)
+    Producto* obtenerProductoPorPosicion(int);
     [[maybe_unused]] void ordenaPrecioAscendente();
 };
 

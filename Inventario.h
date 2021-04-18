@@ -51,7 +51,8 @@ public:
     /*---------------------------------*/
 
     //   HERENCIAS DE IVENDEDOR
-    string realizarCompra(const string &, int, float) override;
+    string realizarCompra(int, int, float) override;
+    Producto *consultar(int) override;
 };
 
 #endif //INC_1ERPROYECTO_INVENTARIO_H

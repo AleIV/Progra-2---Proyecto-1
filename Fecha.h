@@ -8,6 +8,16 @@
 
 using namespace std;
 
+/*
+ * S – Single Responsibility Principle (SRP)
+ *    1) Cada clase debe tener una sola responsabilidad.
+ *          -Clase Fecha funciona para crear objetos que manejen solo fechas específicas,
+ *          esto utilizando sus atributos (dia, mes año) para indicar la fecha exacta
+ *          Incluye algunos métodos para solicitar información mas especifica,
+ *          como la diferencia de días entre una fecha y otra
+ *          pero siempre manteniendo el principio de su única responsabilidad
+ */
+
 class Fecha
 {
 private:
