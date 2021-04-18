@@ -19,34 +19,34 @@ private:
 public:
     //      Constructor + Destructor
     Inventario();
-    Inventario(int, const string &, ListaProducto &, Caja &);
+    [[maybe_unused]] Inventario(int, const string &, ListaProducto &, Caja &);
     ~Inventario();
 
     //      Setters
-    void setIdentificador(int);
-    void setNombre(const string &) override;//implements from IA
-    void setListaProducto(ListaProducto &);
-    void setCaja(Caja &);
+    [[maybe_unused]] void setIdentificador(int);
+    [[maybe_unused]] void setNombre(const string &) override;//implements from IA
+    [[maybe_unused]] void setListaProducto(ListaProducto &);
+    [[maybe_unused]] void setCaja(Caja &);
 
     //      Getters + toString
-    [[nodiscard]] int getIdentificador() const override;//implements from IA
-    [[nodiscard]] string getNombre() const override;//implements from IA,IV
-    ListaProducto *getListaProducto() const;
-    Caja *getCaja() const;
+    [[maybe_unused]] [[nodiscard]] int getIdentificador() const override;//implements from IA
+    [[maybe_unused]] [[nodiscard]] string getNombre() const override;//implements from IA,IV
+    [[maybe_unused]] [[nodiscard]] ListaProducto *getListaProducto() const;
+    [[maybe_unused]] [[nodiscard]] Caja *getCaja() const;
 
-    [[nodiscard]] string toString() const override;//implements from IA,IV
+    [[maybe_unused]] [[nodiscard]] string toString() const override;//implements from IA,IV
 
     /*---------------------------------*/
 
     //   HERENCIAS DE IADMINISTRADOR
-    void insertar(Producto &) override;//Producto
-    bool agregarCantidades(const string &, int) override;//Producto
-    bool disminuirCantidades(const string &, int) override;//Producto
-    void borrar(const string &) override;//Producto
-    Producto *consultar(const string &) override;//Producto
-    [[nodiscard]] float consultarDinero() const override;//implements from IA
-    void ingresarDinero(float) override;//Caja
-    void retirarDinero(float) override;//Caja
+    void insertar(Producto &) override;
+    bool agregarCantidades(const string &, int) override;
+    bool disminuirCantidades(const string &, int) override;
+    void borrar(const string &) override;
+    Producto *consultar(const string &) override;
+    float consultarDinero() const override;
+    void ingresarDinero(float) override;
+    void retirarDinero(float) override;
 
     /*---------------------------------*/
 

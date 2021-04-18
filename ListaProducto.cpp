@@ -1,6 +1,5 @@
 // Created by jordy on 04/04/2021.
 
-#include <iostream>
 #include "ListaProducto.h"
 
 ListaProducto::ListaProducto()
@@ -40,19 +39,41 @@ ListaProducto::~ListaProducto()
     ultimo = xUltimo;
 }
 
-[[maybe_unused]] NodoProducto *ListaProducto::getPrimer() const
+[[maybe_unused]] [[nodiscard]] NodoProducto *ListaProducto::getPrimer() const
 {
     return primer;
 }
 
-[[maybe_unused]] NodoProducto *ListaProducto::getActual() const
+[[maybe_unused]] [[nodiscard]] NodoProducto *ListaProducto::getActual() const
 {
     return actual;
 }
 
-[[maybe_unused]] NodoProducto *ListaProducto::getUltimo() const
+[[maybe_unused]] [[nodiscard]] NodoProducto *ListaProducto::getUltimo() const
 {
     return ultimo;
+}
+
+[[maybe_unused]] [[nodiscard]] string ListaProducto::toStringListaProducto()
+{
+    stringstream s;
+
+    if (listaVacia()) { s << "   - Vacio -" << endl; return s.str(); }
+
+    actual = primer;
+    int cuentaProductos = 0;
+
+    s << "   - Lista de productos -" << endl;
+    while (actual != nullptr)
+    {
+        s << "   - Producto N" << cuentaProductos + 1 << " -" << endl;
+        s << actual->toStringNodoProducto();
+        actual = actual->getSiguiente();
+        cuentaProductos++;
+        s << endl;
+    }
+
+    return s.str();
 }
 
 void ListaProducto::agregar(Producto &xProducto)
@@ -65,9 +86,12 @@ void ListaProducto::agregar(Producto &xProducto)
     }
     else
     {//La condición evita duplicar productos en la lista
-        auto *nuevoNodo = new NodoProducto(xProducto, nullptr);
-        ultimo->setSiguiente(nuevoNodo);
-        ultimo = nuevoNodo;
+        if(obtenerProductoPorNombre(xProducto.getNombre())==nullptr)
+        {
+            auto *nuevoNodo = new NodoProducto(xProducto, nullptr);
+            ultimo->setSiguiente(nuevoNodo);
+            ultimo = nuevoNodo;
+        }
     }
 }
 
@@ -157,7 +181,7 @@ Producto* ListaProducto::obtenerProductoPorNombre(const string& xNombre)
 	return nullptr;
 }
 
-void ListaProducto::ordenaPrecioAscendente()
+[[maybe_unused]] void ListaProducto::ordenaPrecioAscendente()
 {
 	Producto* auxiliar;
 	NodoProducto* actualInterno;
@@ -179,26 +203,4 @@ void ListaProducto::ordenaPrecioAscendente()
 		}
 		actual = actual->getSiguiente();
 	}
-}
-
-string ListaProducto::toStringListaProducto()
-{
-    stringstream s;
-
-    if (listaVacia()) { s << "[AÚN NO HAY PRODUCTOS]" << endl; return s.str(); }
-
-    actual = primer;
-    int cuentaProductos = 0;
-
-    s << "Lista de productos" << endl;
-    while (actual != nullptr)
-    {
-        s << "Producto N" << cuentaProductos + 1 << endl;
-        s << actual->toStringNodoProducto();
-        actual = actual->getSiguiente();
-        cuentaProductos++;
-        s << endl;
-    }
-
-    return s.str();
 }

@@ -2,6 +2,16 @@
 
 #include "MenuVenta.h"
 
+bool MenuVenta::esNumero(string &numeroString, char tipoNumero)
+{
+    for (char const &iterador : numeroString)
+    {
+        if(tipoNumero=='Q' && !isdigit(iterador) && iterador!='.') { return false; }//Permite racionales >= 0
+        if (tipoNumero!='Q' && !isdigit(iterador)) { return false; }//Permite naturales ∪ 0
+    }
+    return true;
+}
+
 MenuVenta::MenuVenta(Inventario &xInventario)
 {
     vendedor = &xInventario;
@@ -9,16 +19,15 @@ MenuVenta::MenuVenta(Inventario &xInventario)
 
 void MenuVenta::mostrar()
 {
-    string nombre;
+    size_t tamanhoBytes;
+    string nombre, numeroString;
     float pago;
     int cantidad;
-
-
 
     char opcion[100];
     do
     {
-        cout << "   << Menu Venta >>" << endl;
+        cout << endl << "   << Menu Venta >>" << endl;
         cout << "   ( 1 ) Realizar compra" << endl;
         cout << "   ( 2 ) Volver..." << endl;
         cout << "->Opcion: ";
@@ -27,9 +36,21 @@ void MenuVenta::mostrar()
         switch(opcion[0])
         {
             case '1'://Realizar compra
-                cout << "Nombre del producto: "; cin >> nombre;
-                cout << "Cantidad a comprar: "; cin >> cantidad;
-                cout << "Paga con: "; cin >> pago;
+                cout << "-> Nombre del producto: "; cin >> nombre;
+                while(true)
+                {
+                    cout<<"-> Cantidad a comprar: "; cin>>numeroString;
+                    if(esNumero(numeroString,'e')){ cantidad = stoi(numeroString,&tamanhoBytes); break;}
+                    else { cout<<"(!) Digite un numero valido..."<<endl; continue;}
+                }
+
+                while(true)
+                {
+                    cout<<"-> Paga con: "; cin>>numeroString;
+                    if(esNumero(numeroString,'Q')) { pago = stof(numeroString,&tamanhoBytes); break;}
+                    else { cout<<"(!) Digite un numero valido..."<<endl; continue;}
+                }
+
                 cout << vendedor->realizarCompra(nombre, cantidad, pago);
 
                 cin.ignore();
@@ -37,7 +58,7 @@ void MenuVenta::mostrar()
 
             case '2': break;//Volver al menu principal
 
-            default: cout<<"Opcion incorrecta, intente de nuevo"<<endl; break;
+            default: cout<<"(!) Opcion incorrecta, intente de nuevo..."<<endl; break;
         }
 
     }while(opcion[0]!='2');

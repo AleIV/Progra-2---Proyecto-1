@@ -11,7 +11,7 @@ Inventario::Inventario()
     caja = new Caja();
 }
 
-Inventario::Inventario(int xIdentificador, const string &xNombre, ListaProducto &xListaProducto, Caja &xCaja)
+[[maybe_unused]] Inventario::Inventario(int xIdentificador, const string &xNombre, ListaProducto &xListaProducto, Caja &xCaja)
 {
     identificador = xIdentificador;
     nombre = xNombre;
@@ -27,55 +27,55 @@ Inventario::~Inventario()
 
 
 //      SETTERS
-void Inventario::setIdentificador(int xIdentificador)
+[[maybe_unused]] void Inventario::setIdentificador(int xIdentificador)
 {
     identificador = xIdentificador;
 }
 
-void Inventario::setNombre(const string &xNombre)
+[[maybe_unused]] void Inventario::setNombre(const string &xNombre)
 {
     nombre = xNombre;
 }
 
-void Inventario::setListaProducto(ListaProducto &xListaProducto)
+[[maybe_unused]] void Inventario::setListaProducto(ListaProducto &xListaProducto)
 {
     listaProducto = &xListaProducto;
 }
 
-void Inventario::setCaja(Caja &xCaja)
+[[maybe_unused]] void Inventario::setCaja(Caja &xCaja)
 {
     caja = &xCaja;
 }
 
 
 //      GETTERS + TOSTRING
-int Inventario::getIdentificador() const
+[[maybe_unused]] [[nodiscard]] int Inventario::getIdentificador() const
 {
     return identificador;
 }
 
-string Inventario::getNombre() const
+[[maybe_unused]] [[nodiscard]] string Inventario::getNombre() const
 {
     return nombre;
 }
 
-ListaProducto *Inventario::getListaProducto() const
+[[maybe_unused]] [[nodiscard]] ListaProducto *Inventario::getListaProducto() const
 {
     return listaProducto;
 }
 
-Caja *Inventario::getCaja() const
+[[maybe_unused]] [[nodiscard]] Caja *Inventario::getCaja() const
 {
     return caja;
 }
 
-string Inventario::toString() const
+[[maybe_unused]] [[nodiscard]] string Inventario::toString() const
 {
     stringstream s;
 
-    s << "Inventario" << endl;
-    s << "--< Identificador: " << identificador << endl;
-    s << "--< Nombre: " << nombre << endl;
+    s << "   - Inventario -" << endl;
+    s << "-< Identificador: " << identificador << endl;
+    s << "-< Nombre: " << nombre << endl;
     s << listaProducto->toStringListaProducto() << endl;
     s<<caja->toString();
 
@@ -149,14 +149,14 @@ void Inventario::retirarDinero(float xDinero)
 //  HERENCIAS DE IVENDEDOR
 string Inventario::realizarCompra(const string &xNombre, int xCantidad, float xPago)
 {
-    if (consultar(xNombre) == nullptr) { return "Producto no registrado\n"; }
+    if (consultar(xNombre) == nullptr) { return "(!) Producto no registrado...\n"; }
     Producto &producto = *consultar((xNombre));
 
-    if (producto.getCantidad() < xCantidad) { return "No hay suficiente en stock\n"; }
-    if (producto.getPrecio()*xCantidad > xPago) { return "Pago insuficiente\n"; }
+    if (producto.getCantidad() < xCantidad) { return "(!) No hay suficiente en stock...\n"; }
+    if (producto.getPrecio()*xCantidad > xPago) { return "(!) Pago insuficiente...\n"; }
 
     //Realiza compra
     disminuirCantidades(xNombre,xCantidad);
-    ingresarDinero(xPago);
+    ingresarDinero(producto.getPrecio()*xCantidad);
     return caja->desgloceVuelto(xPago,producto.getPrecio()*xCantidad);
 }
