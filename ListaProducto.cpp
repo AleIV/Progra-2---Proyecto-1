@@ -58,7 +58,7 @@ ListaProducto::~ListaProducto()
 {
     stringstream s;
 
-    if (listaVacia()) { s << "   - Vacio -" << endl; return s.str(); }
+    if (listaVacia()) { s << "   - No hay productos en lista -" << endl; return s.str(); }
 
     actual = primer;
     int cuentaProductos = 0;
@@ -66,7 +66,7 @@ ListaProducto::~ListaProducto()
     s << "   - Lista de productos -" << endl;
     while (actual != nullptr)
     {
-        s << "   - Producto N" << cuentaProductos + 1 << " -" << endl;
+        s << "      - Producto N" << cuentaProductos + 1 << " -" << endl;
         s << actual->toStringNodoProducto();
         actual = actual->getSiguiente();
         cuentaProductos++;
@@ -179,6 +179,25 @@ Producto* ListaProducto::obtenerProductoPorNombre(const string& xNombre)
 	}
 
 	return nullptr;
+}
+
+Producto *ListaProducto::obtenerProductoPorPosicion(int xPosicion)
+{
+    actual = primer;
+
+    int contador = 0;
+    while (actual != nullptr)
+    {
+        if (contador == xPosicion - 1)
+        {
+            return actual->getProducto();
+        }
+
+        contador++;
+        actual = actual->getSiguiente();
+    }
+
+    return nullptr;
 }
 
 [[maybe_unused]] void ListaProducto::ordenaPrecioAscendente()
